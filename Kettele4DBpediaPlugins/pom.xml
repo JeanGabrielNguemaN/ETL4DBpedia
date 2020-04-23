@@ -1,0 +1,279 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>br.ufrj.ppgi.greco.dbpedia</groupId>
+  <artifactId>Kettele4DBpediaPlugins</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+
+  <name>Kettele4DBpediaPlugins</name>
+  <url>http://maven.apache.org</url>
+
+  <developers>
+		<developer>
+			<id>Jean.gabriel.nguema</id>
+			<name>Jean Gabriel Nguema Ngomo</name>
+			<email>mvojgnn@gmail.com</email>
+			<organization>UFRJ (PPGI/GRECO)</organization>
+			<organizationUrl>http://greco.ppgi.ufrj.br</organizationUrl>			
+		</developer>
+	</developers>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+			
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>		
+		<!-- Pentaho dependencies -->
+		<pdi.version>8.2.0.7-719</pdi.version>
+		
+		<pdi.home>C:/DBpedia/Kettle/pdi-ce-8.2.0.0-342/data-integration</pdi.home>
+		<plugin.dir>target/plugins/steps/${project.name}</plugin.dir>
+		<pdi.plugin.dir>plugins/steps/${project.name}</pdi.plugin.dir>
+		<pdi.plugin.lib_name>${project.artifactId}</pdi.plugin.lib_name>
+		
+		<commons-xul.version>8.2.0.7-719</commons-xul.version>
+		<pentaho-metastore.version>8.2.0.7-719</pentaho-metastore.version>
+
+		<!-- Third-party dependencies -->
+		<org.eclipse.swt.version>4.6.1</org.eclipse.swt.version>
+	   
+		<commons-codec.version>1.10</commons-codec.version>
+		<commons-beanutils.version>1.9.3</commons-beanutils.version>
+		<commons-logging.version>1.1.3</commons-logging.version>
+		
+		<!-- To update any dependency, update their version here -->
+		<xstream.version>1.4.10</xstream.version>
+		<xstream.xmlpull.version>1.1.3.1</xstream.xmlpull.version>
+		
+		<jena.version>3.10.0</jena.version>
+	</properties>
+
+	<dependencies>
+		<!-- Kettle dependencies (start) -->
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-core</artifactId>
+			<version>${pdi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-db</artifactId>
+			<version>4.4.3.4</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-dbdialog</artifactId>
+			<version>${pdi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-engine</artifactId>
+			<version>${pdi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<dependency>
+		   <groupId>org.pentaho.di.plugins</groupId>
+		   <artifactId>pdi-xml-plugin-core</artifactId>
+		   <version>${pdi.version}</version>
+		</dependency>
+		
+		<dependency>
+		   <groupId>pentaho-kettle</groupId>
+		   <artifactId>kettle5-log4j-plugin</artifactId>
+		   <version>7.1.0.19-174</version>
+		</dependency>
+		
+        <dependency>
+			<groupId>pentaho</groupId>
+			<artifactId>metastore</artifactId>
+			<version>${pdi.version}</version>
+       </dependency>
+	   
+	   <dependency>
+			<groupId>pentaho-kettle</groupId>
+			<artifactId>kettle-ui-swt</artifactId>
+			<version>${pdi.version}</version>
+			<scope>provided</scope>
+		</dependency>
+	  
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-vfs2</artifactId>
+			<version>2.0</version>
+		</dependency>
+		
+		<!-- Kettle dependencies (end) -->
+		
+		
+		<!-- Jena dependencies (start) -->
+		<!-- 
+		<dependency>
+			<groupId>org.apache.jena</groupId>
+			<artifactId>jena-core</artifactId>
+			<version>${jena.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.jena</groupId>
+			<artifactId>jena-arq</artifactId>
+			<version>${jena.version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.jena</groupId>
+			<artifactId>jena-core</artifactId>
+			<version>${jena.version}</version>
+		</dependency>
+		 -->
+		<!-- Jena dependencies (end) -->
+		
+		
+		
+		
+		<dependency>
+			<groupId>com.thoughtworks.xstream</groupId>
+			<artifactId>xstream</artifactId>
+			<version>${xstream.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>xmlpull</groupId>
+			<artifactId>xmlpull</artifactId>
+			<version>${xstream.xmlpull.version}</version>
+		</dependency>
+	  
+
+		<!-- ETL4LOD -->
+	    
+		<dependency>
+			<groupId>br.ufrj.ppgi.greco.kettle</groupId>
+			<artifactId>KettlePluginTools</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<dependency>
+			  <groupId>br.ufrj.ppgi.greco.dbpedia</groupId>
+  			  <artifactId>Kettle4DBpediaPersistenceLayer</artifactId>
+			  <version>1.0</version>
+		</dependency>
+		
+	</dependencies>
+
+	<build>
+		<plugins>
+			<!-- mvn eclipse:eclipse -DdownloadSources=true -DdownloadJavadocs -->
+			<!-- http://maven.apache.org/plugins/maven-eclipse-plugin/examples/attach-library-sources.html -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>true</downloadJavadocs>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<!--<version>3.8.0</version>-->
+				<configuration>
+					<source>${maven.compiler.source}</source>
+					<target>${maven.compiler.target}</target>
+					<encoding>UTF-8</encoding>					
+				</configuration>
+			</plugin>
+
+            
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>copy-files-to-kettle</id>
+						<phase>install</phase>
+						<configuration>
+							<target name="copy-files-to-kettle">
+								<echo
+									message="Copying ${basedir}\etc\*.[png,xml,properties] to ${basedir}/${plugin.dir}" />
+								<copy todir="${basedir}/${plugin.dir}" overwrite="true">
+									<fileset dir="${basedir}/etc" includes="**/*.png,**/*.xml,**/*.properties" />
+								</copy>
+
+                                <!--  
+								<echo
+									message="Copying ${basedir}\libs\*.jar to ${basedir}/${plugin.dir}/lib" />
+								<copy todir="${basedir}/${plugin.dir}/lib" overwrite="true">
+									<fileset dir="${basedir}/libs" includes="**/*.jar" />
+								</copy>
+
+								<echo
+									message="Copying ${project.build.directory}\${project.build.finalName}.${project.packaging} to ${basedir}/${plugin.dir}" />
+								<copy
+									file="${project.build.directory}/${project.build.finalName}.${project.packaging}"
+									tofile="${basedir}/${plugin.dir}/${pdi.plugin.lib_name}.${project.packaging}"
+									overwrite="true" />
+									-->
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			
+		</plugins>
+	</build>
+	
+	
+  <modules>
+  	<module>DBpediaMappingsMaintainer</module>
+  	<module>TemplatesMaintainer</module>
+  	<module>ArticleChecker</module>
+  	<module>ArticleContentBuilder</module>
+  	<module>ArticlePublisher</module>
+  	<module>TemplateSelector</module>
+  	<module>TemplateMapper</module>
+  </modules>
+  
+  <repositories>
+		<repository>
+			<id>pentaho-public</id>
+			<name>Pentaho Public</name>
+			<url>http://nexus.pentaho.org/content/groups/omni</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+			</snapshots>
+		</repository>
+
+		<repository>
+			<id>project.local</id>
+			<name>project</name>
+			<url>file:${project.basedir}/repo</url>
+		</repository>
+
+		<repository>
+			<id>mvn-repo</id>
+			<name>Maven Repository</name>
+			<url>https://mvnrepository.com/artifact/</url>
+		</repository>
+	</repositories>
+</project>
