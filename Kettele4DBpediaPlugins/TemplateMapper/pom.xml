@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>br.ufrj.ppgi.greco.dbpedia</groupId>
+    <artifactId>Kettele4DBpediaPlugins</artifactId>
+    <version>1.0</version>
+  </parent>
+  <groupId>br.ufrj.ppgi.greco.kettle.dbpedia</groupId>
+  <artifactId>TemplateMapper</artifactId>
+  <version>1.0</version>
+  <name>TemplateMapper</name>
+  <url>http://maven.apache.org</url>
+  <developers>
+		<developer>
+			<id>Jean.gabriel.nguema</id>
+			<name>Jean Gabriel Nguema Ngomo</name>
+			<email>mvojgnn@gmail.com</email>
+			<organization>UFRJ (PPGI/GRECO)</organization>
+			<organizationUrl>http://greco.ppgi.ufrj.br</organizationUrl>			
+		</developer>
+  </developers>
+  
+  <properties>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+ 
+		<parent.basedir>${basedir}/..</parent.basedir>
+		
+		<plugin.dir>Kettle4DBpedia/${project.name}</plugin.dir>
+		
+		<pdi.plugin.lib_name>${project.artifactId}</pdi.plugin.lib_name>
+  </properties>
+  
+  <build>
+		<plugins>
+				<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>copy-files-to-kettle</id>
+						<phase>install</phase>
+						<configuration>
+							<target name="copy-files-to-kettle">
+								<echo
+									message="Copying ${basedir}\etc\*.[png,xml,properties] to ${pdi.home}/plugins/steps/${plugin.dir}" />
+								
+								<copy todir="${pdi.home}/plugins/steps/${plugin.dir}" overwrite="true">
+									<fileset dir="${basedir}/etc" includes="**/*.png,**/*.xml,**/*.properties" />
+								</copy>
+
+								<echo
+									message="Copying ${basedir}\libs\*.jar to ${basedir}/${parent.basedir}/lib" />
+								<copy todir="${pdi.home}/plugins/steps/${plugin.dir}/lib" overwrite="true">
+									<fileset dir="${basedir}/libs" includes="**/*.jar" />
+								</copy>
+								
+								
+								<echo
+									message="Copying ..\${basedir}\libs\*.jar to ${basedir}/${parent.basedir}/lib" />
+								<copy todir="${pdi.home}/plugins/steps/${plugin.dir}/lib" overwrite="true">
+									<fileset dir="${parent.basedir}/libs" includes="**/*.jar" />
+								</copy>
+
+								<echo
+									message="Copying ${project.build.directory}\${project.build.finalName}.${project.packaging} to ${basedir}/${plugin.dir}" />
+								<copy
+									file="${project.build.directory}/${project.build.finalName}.${project.packaging}"
+									tofile="${pdi.home}/plugins/steps/${plugin.dir}/${pdi.plugin.lib_name}.${project.packaging}"
+									overwrite="true" />
+							</target>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
