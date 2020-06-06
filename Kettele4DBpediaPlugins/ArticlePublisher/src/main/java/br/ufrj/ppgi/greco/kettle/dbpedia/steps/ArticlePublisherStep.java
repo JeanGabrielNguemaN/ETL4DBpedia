@@ -345,8 +345,7 @@ public class ArticlePublisherStep extends BaseStep implements StepInterface {
 		//gerar referência
 	    String references =null;
 	    
-	    //references= getReference(data);
-	    references=getDefaultReference();
+	    references= getReference(data);
 	    
 	    //Conteudo do artigo
 	    String content= generateContent(proposedTitle, firstSection, infobox.toString(),
@@ -355,6 +354,29 @@ public class ArticlePublisherStep extends BaseStep implements StepInterface {
 		return new Article(proposedTitle, content);
 	}
 
+	private String getReference(ArticlePublisherStepData data) {
+		
+		String referenceURL= data.referenceUrl;
+		String referenceTitle = data.referenceTitle;
+		String referencePublisher = data.referencePublisher;
+		String referenceAccessDate = data.referenceAccessdate;
+		
+		
+		String reference="<ref name=\"wikiMarkup\">{{cite web "
+				+ " |url="+referenceURL
+				+ " |title="+ referenceTitle
+				+ " |publisher="+ referencePublisher
+				+ " |accessdate=" + referenceAccessDate
+				+ " }}</ref>.";
+		
+		return reference;
+	}
+	
+	
+	/**
+	 * Used for tests proposes of getReference(data)
+	 * @return
+	 */
 	private String getDefaultReference() {
 		
 		String reference="<ref name=\"wikiMarkup\">{{cite web "
@@ -367,6 +389,7 @@ public class ArticlePublisherStep extends BaseStep implements StepInterface {
 		
 		return reference;
 	}
+	
 
 	private String gerarInfobox(JSONObject articleJson) {
 		
