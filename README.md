@@ -1,7 +1,7 @@
 # ETL4DBpedia
  Framework for publishing data on Wikipedia to serve [Portuguese Edition of DBpedia](http://pt.dbpedia.org/). ETL4DBpedia is a two layers-architecture framework based on  Kettle (Pentaho Data Ingration).
 
-## DESCRIPTION
+## Description
 ### Persistence Layer
 Responsible for managing the data used in the steps of the framework, such as templates and templates mapping in DML (DBpedia Mapping Language) obtaining from Wikipedia and DBpedia Wiki Mapping platform. 
 
@@ -9,12 +9,15 @@ Responsible for managing the data used in the steps of the framework, such as te
 Responsible for transformation of the fo specific domain data and its respective publication on Wikipedia, so that they  result in the data extraction for DBpedia In Portuguese Edition.
 
 ### ETL4DBpedia Steps(Plugins)
-ETL4DBpedia is currently provided with the following steps\plugins.
+ETL4DBpedia is currently provided with the following steps\plugins:
 
-| Plugin | README |
-| ------ | ------ |
-| TemplatesMaintainer | [ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/TemplateMaintainer] |
-| DBpediaMappingsMaintainer | [ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/DBpediaMappingMaintainer] |
+* TemplateMaintainer 
+* DBpediaMappingMaintainer 
+* ArticleChecher 
+* ArticleContentBuilder 
+* ArticlePublisher 
+* TemplateSelector 
+* TemplateMapper 
 
 
 ## Installation
