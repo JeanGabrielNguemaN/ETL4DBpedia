@@ -1,7 +1,7 @@
 # ETL4DBpedia
  Framework for publishing data on Wikipedia to serve [Portuguese Edition of DBpedia](http://pt.dbpedia.org/). ETL4DBpedia is a two layers-architecture framework based on  Kettle (Pentaho Data Ingration).
-Publication layers' steps are available at the following path:
-*  [Publication Layer]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins)
+ * Author: Jean Gabriel Nguema Ngomo (mvojgnn@gmail.com).
+
 ## Description
 ### Persistence Layer
 Responsible for managing the data used in the steps of the framework, such as templates and templates mapping in DML (DBpedia Mapping Language) obtaining from Wikipedia and DBpedia Wiki Mapping platform.
@@ -10,7 +10,7 @@ Persistence layer's Artifacts and tools are available at the following path:
 
 ### Publication Layer
 Responsible for transformation of the fo specific domain data and its respective publication on Wikipedia, so that they  result in the data extraction for DBpedia In Portuguese Edition.
-
+All Publication layers' steps are available at the following path:[Publication Layer]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins).
 ### ETL4DBpedia Steps(Plugins)
 ETL4DBpedia is currently provided with the following steps (kettle plugins):
 
@@ -29,9 +29,9 @@ ETL4DBpedia is currently provided with the following steps (kettle plugins):
 2.	Download and Install MySQL database (8.0 version ). 
     * Create the database by the following queries: ETL4DBpedia/Kettle4DBpediaPersistenceLayer/Database/SQL/DDL.sql
 	
-3.	Add jars into  PDI_HOME\data-integration\lib directory.
+3.	Add jars into  PDI_HOME\data-integration\lib directory, where PDI is the root directory of Pentaho Data Integration.
      * MySQL driver (mysql-connector-5.1.18.jar)
-     * Jena jars (3.10.0) 
+     * Apache Jena jars (3.10.0 or latest version) 
 	 
 4.	Download, install and settup Maven.
 
@@ -51,8 +51,8 @@ ETL4DBpedia is currently provided with the following steps (kettle plugins):
      $ mvn clean package
 	```
 	
-8.	Register persistenceLayer components into directory publication layer:
-	* Copy ETL4DBpedia\Kettle4DBpediaPersistenceLayer\target\ Kettle4DBpediaPersistenceLayer-1.0.jar file  to  ETL4DBpedia\Kettele4DBpediaPlugins\libs directory
+8.	Register Persistence Layer's artefacts into directory publication layer:
+	* Copy ETL4DBpedia\Kettle4DBpediaPersistenceLayer\target\Kettle4DBpediaPersistenceLayer-1.0.jar  file  to  ETL4DBpedia\Kettele4DBpediaPlugins\libs directory
 
 9.	Install ET4DBpedia in PDI:
 	```sh
