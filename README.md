@@ -18,7 +18,8 @@ ETL4DBpedia is currently provided with the following steps\plugins:
 * ArticlePublisher 
 * TemplateSelector 
 * TemplateMapper 
-| Step | README |
+
+| Step | Description |
 | ------ | ------ |
 | TemplatesMaintainer | [TemplatesMaintainer]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/TemplatesMaintainer)|
 | DBpediaMappingMaintainer |[DBpediaMappingMaintainer]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/DBpediaMappingMaintainer)|
