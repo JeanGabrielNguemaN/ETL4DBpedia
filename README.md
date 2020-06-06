@@ -11,23 +11,13 @@ Responsible for transformation of the fo specific domain data and its respective
 ### ETL4DBpedia Steps(Plugins)
 ETL4DBpedia is currently provided with the following steps\plugins:
 
-* TemplateMaintainer 
-* DBpediaMappingMaintainer 
-* ArticleChecher 
-* ArticleContentBuilder 
-* ArticlePublisher 
-* TemplateSelector 
-* TemplateMapper 
-
-| Step | Description |
-| ------ | ------ |
-| TemplatesMaintainer | [TemplatesMaintainer]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/TemplatesMaintainer)|
-| DBpediaMappingMaintainer |[DBpediaMappingMaintainer]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/DBpediaMappingMaintainer)|
-| ArticleChecher | [TemplatesMaintainer]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/ArticleChecher)|
-| ArticlePublisher | [TemplatesMaintainer]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/TemplatesMaintainer)|
-| TemplateSelector | [TemplatesMaintainer]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/TemplatesMaintainer)|
-| TemplateMapper | [TemplatesMaintainer]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/TemplatesMaintainer)|
-| TemplateMapper | [TemplatesMaintainer]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/TemplatesMaintainer)|
+* [TemplatesMaintainer]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/TemplatesMaintainer)
+* [DBpediaMappingMaintainer]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/DBpediaMappingMaintainer)
+* [ArticleChecher]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/ArticleChecher)
+* [TemplateSelector]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/TemplateSelector)
+* [TemplateMapper]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/TemplateMapper)
+* [ArticleContentBuilder ]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/ArticleContentBuilder )
+* [ArticlePublisher]( https://github.com/JeanGabrielNguemaN/ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/ArticlePublisher)
 
 ## Installation
 
