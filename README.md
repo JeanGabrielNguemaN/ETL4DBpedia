@@ -13,8 +13,8 @@ ETL4DBpedia is currently provided with the following steps\plugins.
 
 | Plugin | README |
 | ------ | ------ |
-| TemplateMaintainer | [Kettle4DBpediaPersistenceLayer/TemplateMaintainer/README.md] |
-| DBpediaMappingMaintainer | [Kettle4DBpediaPersistenceLayer/DBpediaMappingMaintainer/README.md] |
+| TemplateMaintainer | [ETL4DBpedia/Kettle4DBpediaPersistenceLayer/TemplateMaintainer/README.md] |
+| DBpediaMappingMaintainer | [ETL4DBpedia/Kettle4DBpediaPersistenceLayer/DBpediaMappingMaintainer/README.md] |
 | ArticleChecher | [Kettele4DBpediaPlugins/ArticleChecher/README.md] |
 | ArticleContentBuilder | [Kettele4DBpediaPlugins/ArticleContentBuilder/README.md] |
 | ArticlePublisher | [Kettele4DBpediaPlugins/ArticlePublisher/README.md] |
