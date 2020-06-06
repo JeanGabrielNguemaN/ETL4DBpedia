@@ -13,8 +13,8 @@ ETL4DBpedia is currently provided with the following steps\plugins.
 
 | Plugin | README |
 | ------ | ------ |
-| TemplatesMaintainer | [ETL4DBpedia/Kettele4DBpediaPlugins/TemplateMaintainer] |
-| DBpediaMappingsMaintainer | [ETL4DBpedia/Kettele4DBpediaPlugins/DBpediaMappingMaintainer] |
+| TemplatesMaintainer | [ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/TemplateMaintainer] |
+| DBpediaMappingsMaintainer | [ETL4DBpedia/tree/master/Kettele4DBpediaPlugins/DBpediaMappingMaintainer] |
 
 
 ## Installation
