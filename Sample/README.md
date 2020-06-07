@@ -5,7 +5,7 @@
 
 ## Sample
 This sample shows a typical example of ETL4DBpedia using. Prerequisites: ETL4DBpedia installed on Kettle.
-1. Run the persistence scenario in Kettle.
+1. Run the persistence scenario in Kettle (Transf_CBPM_Fiocruz_V01.ktr).
 
-2. Run the publishing scenario. The execution requires a bot user with approved authorization for publication on Wikipedia/DBpedia.Despite this, you can use ETL4DBpedia without the publishing step.
+2. Run the publication scenario (adjust and settup it according to your data). The execution requires a bot user with approved authorization for publication on Wikipedia/DBpedia.Despite this, you can use ETL4DBpedia without the publishing step.
 
