@@ -1,5 +1,5 @@
 # ETL4DBpedia
- Framework for improving  data completeness in [Portuguese Edition of DBpedia](http://pt.dbpedia.org/), as well as his quality.  DBpedia is Semantic Web knowledge base extracted from Wikipedia. DBpedia has editions (also known as chapters) in many languages. For this reason, ETL4DBpedia is aimed at publishing in Wikipedia those missing data from DBpedia, while ensuring they will result in resources and RDF triples whithout some inconsistencies. ETL4DBpedia is a two layers-architecture framework built by  Kettle's Java API (Kettle is also named Pentaho Data Ingration). 
+ Framework for improving  data completeness in [Portuguese Edition of DBpedia](http://pt.dbpedia.org/), as well as its quality.  DBpedia is Semantic Web knowledge base extracted from Wikipedia. DBpedia has editions (also known as chapters) in many languages. For this reason, ETL4DBpedia is aimed at publishing in Wikipedia those missing data from DBpedia, while ensuring they will result in resources and RDF triples whithout some inconsistencies. ETL4DBpedia is a two layers-architecture framework built by  Kettle's Java API (Kettle is also named Pentaho Data Ingration). 
  * Author: Jean Gabriel Nguema Ngomo (mvojgnn@gmail.com).
  * Licence: Apache License, Version 2.0.
 
