@@ -78,7 +78,7 @@ public class DBpediaMappingsLoaderStep extends BaseStep implements StepInterface
 		//intervalo de tempo entre processamento de rows
         try {
         	
-			java.util.concurrent.TimeUnit.SECONDS.sleep(2);
+			java.util.concurrent.TimeUnit.SECONDS.sleep(1);
 			
 		} catch (InterruptedException e) {
 			

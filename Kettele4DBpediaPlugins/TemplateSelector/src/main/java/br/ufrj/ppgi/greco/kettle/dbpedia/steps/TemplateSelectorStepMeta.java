@@ -32,7 +32,7 @@ import org.w3c.dom.Node;
 		id = "TemplateSelector",
 		name = "Template Selector",
 		description = "Seleciona o template informando palavras chaves",
-		image ="br/ufrj/ppgi/greco/kettle/dbpedia/steps/resources/image.svg",
+		image ="br/ufrj/ppgi/greco/kettle/dbpedia/steps/resources/image.jpg",
 		categoryDescription = "LinkedDataBR",
 		documentationUrl = "https://github.com/jgnn/TemplateSelector.git"
 		)
@@ -68,7 +68,7 @@ public class TemplateSelectorStepMeta extends BaseStepMeta implements StepMetaIn
 		setDefault();
 	}
 
-	// TODO Validar todos os campos para dar feedback ao usuario!
+	//Validar todos os campos para dar feedback ao usuario!
 	@Override
 	public void check(List<CheckResultInterface> remarks, TransMeta transMeta, StepMeta stepMeta, RowMetaInterface prev,
 			String[] input, String[] output, RowMetaInterface info) {
@@ -117,17 +117,15 @@ public class TemplateSelectorStepMeta extends BaseStepMeta implements StepMetaIn
 		}
 	}
 
-	// Gerar XML para salvar um .ktr
+	//Gerar XML para salvar um .ktr
 	@Override
 	public String getXML() throws KettleException {
-		
 		
 		StringBuilder xml = new StringBuilder();
 		
 		xml.append(XMLHandler.addTagValue(Field.TEMPLATE_OUTPUT.name(), templateFieldName));
 		
 		xml.append(XMLHandler.addTagValue(Field.KEYCONCEPTS_INPUT.name(), keyConcepts));
-
 
 		return xml.toString();
 	}
@@ -181,20 +179,7 @@ public class TemplateSelectorStepMeta extends BaseStepMeta implements StepMetaIn
 	 * Inicializar os campos para nao dexa-los nulos
 	 */
 	public void setDefault() {
-      /*
-		mapTable = new DataTable<String>(Field.MAP_TABLE.name(), 
-				Field.MAP_TABLE_SUBJECT_FIELD_NAME.name(),
-				Field.MAP_TABLE_PREDICATE_FIELD_NAME.name(), 
-				Field.MAP_TABLE_PREDICATE_URI.name(),
-				Field.MAP_TABLE_OBJECT_FIELD_NAME.name(), 
-				//acrescentei
-				Field.MAP_TABLE_SUBJECT_URI.name());
-
-		subjectOutputFieldName = "campoDominio";
-		predicateOutputFieldName = "atributoInfobox";
-		//objectOutputFieldName = "object";
-		keepInputFields = false;
-		*/
+		
 		templateFieldName = "template";
 		keyConcepts="";
 	}
@@ -206,30 +191,11 @@ public class TemplateSelectorStepMeta extends BaseStepMeta implements StepMetaIn
 	public void getFields(RowMetaInterface inputRowMeta, String name, RowMetaInterface[] info, StepMeta nextStep,
 			VariableSpace space) throws KettleStepException {
 		
-		
 		ValueMetaInterface field = null;
 		
 		field = new ValueMetaString(templateFieldName);
 		field.setOrigin(name);
 		inputRowMeta.addValueMeta(field);
-
-		/*
-		if (!keepInputFields)
-			inputRowMeta.clear();
-
-		field = new ValueMetaString(subjectOutputFieldName);
-		field.setOrigin(name);
-		inputRowMeta.addValueMeta(field);
-
-		field = new ValueMetaString(predicateOutputFieldName);
-		field.setOrigin(name);
-		inputRowMeta.addValueMeta(field);
-        */
-		
-		//field = new ValueMetaString(objectOutputFieldName);
-		//field.setOrigin(name);
-		//inputRowMeta.addValueMeta(field);
-			
 	}
 
 	// Getters & Setters

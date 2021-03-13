@@ -22,61 +22,48 @@
   
   <properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>		
-			
+		<maven.compiler.target>1.8</maven.compiler.target>			
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>		
-		
-		
 		<jena.version>3.10.0</jena.version>
-		
 		<plugin.dir>target/plugins/steps/${project.name}</plugin.dir>
-	
 		<pdi.plugin.dir>plugins/steps/${project.name}</pdi.plugin.dir>
-   
 	</properties>
 
 	<dependencies>
-	
-	  
 		<!-- Jena dependencies (start) -->
 		<dependency>
 			<groupId>org.apache.jena</groupId>
 			<artifactId>jena-core</artifactId>
 			<version>${jena.version}</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.apache.jena</groupId>
 			<artifactId>jena-arq</artifactId>
 			<version>${jena.version}</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.apache.jena</groupId>
 			<artifactId>jena-core</artifactId>
 			<version>${jena.version}</version>
 		</dependency>
-		
 		<!-- Jena dependencies (end) -->
 	
-		
-		
+		<!-- MySQL Driver -->
 		<dependency>
     		<groupId>mysql</groupId>
     		<artifactId>mysql-connector-java</artifactId>
     		<version>5.1.47</version>
 		</dependency>
-		
-		
+
+		<!-- jsoup HTML parser library @ https://jsoup.org/ -->
 		<dependency>
-		  <!-- jsoup HTML parser library @ https://jsoup.org/ -->
 			  <groupId>org.jsoup</groupId>
 			  <artifactId>jsoup</artifactId>
 			  <version>1.12.1</version>
 		</dependency>
 		
-			<dependency>
+		<dependency>
 			<groupId>org.jdom</groupId>
 			<artifactId>jdom2</artifactId>
 			<version>2.0.6</version>
@@ -87,13 +74,11 @@
   			  <artifactId>json</artifactId>
 			  <version>20180813</version>
 		</dependency>
-		
 	
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.5.10</version>
 		</dependency>
-	
   </dependencies>
 </project>

@@ -1,14 +1,12 @@
 package br.ufrj.ppgi.greco.kettle.dbpedia.steps;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.pentaho.di.core.exception.KettleException;
 import org.pentaho.di.core.exception.KettleStepException;
 import org.pentaho.di.core.row.RowDataUtil;
 import org.pentaho.di.core.row.RowMetaInterface;
-import org.pentaho.di.core.row.ValueMetaInterface;
+
 import org.pentaho.di.i18n.BaseMessages;
 import org.pentaho.di.trans.Trans;
 import org.pentaho.di.trans.TransMeta;
@@ -25,8 +23,6 @@ public class TemplateSelectorStep
  extends BaseStep implements StepInterface {
 
 	private static final Class<?> PKG = TemplateSelectorStepMeta.class; // for i18n purposes
-
-	private StringBuffer fileContent;
 
 	public TemplateSelectorStep(StepMeta stepMeta, StepDataInterface stepDataInterface, int copyNr,
 			TransMeta transMeta, Trans trans) {

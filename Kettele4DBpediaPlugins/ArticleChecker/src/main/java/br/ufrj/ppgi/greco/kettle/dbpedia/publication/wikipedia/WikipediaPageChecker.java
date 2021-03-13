@@ -1,28 +1,29 @@
+/*
+* %W% %E% Jean Gabriel Nguema Ngomo
+*
+* Copyright 2021 Jean Gabriel Nguema Ngomo
+*
+*Licensed under the Apache License, Version 2.0 (the "License");
+*you may not use this file except in compliance with the License.
+*You may obtain a copy of the License at
+*
+*    http://www.apache.org/licenses/LICENSE-2.0
+*
+*Unless required by applicable law or agreed to in writing, software
+*distributed under the License is distributed on an "AS IS" BASIS,
+*WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*See the License for the specific language governing permissions and
+*limitations under the License.
+*/
 package br.ufrj.ppgi.greco.kettle.dbpedia.publication.wikipedia;
 
-import java.io.BufferedReader;
-
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.UnknownHostException;
 import java.util.HashMap;
-
-import javax.net.ssl.HttpsURLConnection;
-
 import org.json.JSONArray;
 import org.json.JSONObject;
-
 import br.ufrj.ppgi.greco.dbpedia.wikipedia.WikipediaRequestHandler ;
-import br.ufrj.ppgi.greco.kettle.dbpedia.publication.wikipedia.CheckResult;
-import br.ufrj.ppgi.greco.kettle.dbpedia.publication.wikipedia.Entity;
-import br.ufrj.ppgi.greco.kettle.dbpedia.publication.wikipedia.Page;
-import br.ufrj.ppgi.greco.kettle.dbpedia.publication.wikipedia.WikiQueryHandler;
-
 
 /**
- * Verifica se um artigo existe
+ * Verifica se um artigo existe na Wikipedia
  * @author Jean Gabriel Nguema
  *
  */
@@ -202,17 +203,6 @@ public class WikipediaPageChecker {
 	 
 	 String[] infoboxInWikiProperties = 
 			 infoboxPropertiesValuesHashMap.keySet().toArray(new String[0]);
-	 
-	 
-	 //for (String prop: infoboxInWikiProperties){
-	//	 System.out.println("Prop :"+ prop);
-	// }
-	 
-	 /* String nome=infoboxPropertiesValuesHashMap.get("nome");
-	  String familia=infoboxPropertiesValuesHashMap.get("família");
-	  String genero=infoboxPropertiesValuesHashMap.get("género");
-	  String especie=infoboxPropertiesValuesHashMap.get("espécie");
-	  */
 	  
 	  String[] propertiesValues= 
 			  new String[infoboxInWikiProperties.length];
@@ -228,66 +218,29 @@ public class WikipediaPageChecker {
 	  if(isNull_or_EmptyV2_(selectedProperties)){
 		  return false;
 	  }
-	 
-	  
-	 // System.out.println("Infobox species= "+especie);
-	  
-	  /*
-	  if( planta.getFamilia()!=null && planta.getGenero()!=null && planta.getEspecie()!=null  &&
-			         familia.contains(planta.getFamilia()) 
-			        && genero.contains(planta.getGenero())
-			        && especie.toLowerCase().contains(planta.getEspecie().toLowerCase())){
-		*/
-	 /*
-	  if(familia.contains(planta.getFamilia()) 
-		        && genero.contains(planta.getGenero())
-		        && especie.toLowerCase().contains(planta.getEspecie().toLowerCase())){
-	  
-		 
-		  //System.out.println("Infobox Familia= "+familia);
-		  //System.out.println("Planta Familia= "+planta.getFamilia());
-		  //System.out.println("Infobox genero= "+genero);
-		  //System.out.println("Planta genero= "+planta.getGenero());
-		  //System.out.println("Infobox species= "+especie);
-		  //System.out.println("Planta species= "+planta.getEspecie());
-		  
-		  //page= new Page();
-		  //page.setTitle(nome);
-		  
-		  pageFound= true;
-		  
-		 
-	  }
-	 */
-	  
-	 //System.out.println("SIZE ="+propertiesValues.length);
-	  
-	 for(int i=0; i<selectedProperties.length;i++ ){
+	    
+	  for(int i=0; i<selectedProperties.length;i++ ){
 		  
 		 String propriedade=selectedProperties[i];
-		 
-		 //System.out.println(i+" - ITEM ="+propertiesValues[i]);
-		 
-		 
-		String  infoboxPropertyValue=infoboxPropertiesValuesHashMap.get(propriedade);
-		String  selectedPropertyValue=selectedPropertiesValuesHashMap.get(propriedade);
+		  
+		 String  infoboxPropertyValue=infoboxPropertiesValuesHashMap.get(propriedade);
 		
+		 String  selectedPropertyValue=selectedPropertiesValuesHashMap.get(propriedade);
 		
-		if( (infoboxPropertyValue==null || selectedPropertyValue==null )){
-			return false;
-		}
-		//Se não contiver
-		if( ! infoboxPropertyValue.contains(selectedPropertyValue)){
+		 if( (infoboxPropertyValue==null || selectedPropertyValue==null )){
+			
+			 return false;
+		
+		 }
+		
+		 //Se não contiver
+		 if( ! infoboxPropertyValue.contains(selectedPropertyValue)){
 			 //contar
 			 return false;
-		  }
-			
+		  }	
 	  }
 	  
-	  //System.out.println("----------------------CHEGOU AQUI ------------------");
-	 // System.out.println("----------------------CHEGOU AQUI ------------------"+page);
-	  pageFound=true;
-	  return pageFound;
+	  return true;
    }
 
 /**Extair valores do infobox
@@ -400,8 +353,6 @@ public String[] splitInfoboxByIgual(String infobox) {
 		//Se não deve cconter esta string
 		return  ! firstSection.contains(strTituleEnexistente);
 	}
-
-		
 
 
 	/**

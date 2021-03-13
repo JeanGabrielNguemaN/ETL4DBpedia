@@ -36,9 +36,9 @@ import org.w3c.dom.Node;
 		  id = "DBpediaMappingsMaintainer",
 		  name = "DBpedia Mappings Maintainer",
 		  description = "Recupera os templates e seus mapeamentos, interpretando os mesmos",
-		  image = "br/ufrj/ppgi/greco/kettle/dbpedia/steps/resources/image.svg",
+		  image = "br/ufrj/ppgi/greco/kettle/dbpedia/steps/resources/image.jpg",
 		  categoryDescription = "LinkedDataBR",
-		  documentationUrl = "https://github.com/jgnn/Article Content Builder.git"
+		  documentationUrl = "https://github.com/jgnn/TemplatesMappingsMaintainer.git"
 		)
 public class DBpediaMappingsLoaderStepMeta extends BaseStepMeta implements StepMetaInterface {
 

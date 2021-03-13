@@ -36,10 +36,9 @@ import org.w3c.dom.Node;
 		  id = "TemplatesMaintainer",
 		  name = "Templates Maintainer",
 		  description = "Recupera os templates e realiza sua persistência",
-		  //image = "br/ufrj/ppgi/greco/kettle/dbpedia/steps/resources/image.svg",
 		  image = "br/ufrj/ppgi/greco/kettle/dbpedia/steps/resources/image.jpg",  
 		  categoryDescription = "LinkedDataBR",
-		  documentationUrl = "https://github.com/jgnn/TemplatesLoader.git"
+		  documentationUrl = "https://github.com/jgnn/TemplatesMaintainer.git"
 		)
 public class TemplatesLoaderStepMeta extends BaseStepMeta implements StepMetaInterface {
 
@@ -47,7 +46,6 @@ public class TemplatesLoaderStepMeta extends BaseStepMeta implements StepMetaInt
 	public enum Field {
 		TEMPLATE_OUT_FIELD,
 		TEMPLATE_PATTERN_IN
-		
 	}
 
 	//output
@@ -56,7 +54,6 @@ public class TemplatesLoaderStepMeta extends BaseStepMeta implements StepMetaInt
 	//input
 	private String templatePattern;
 		
-	
 	public TemplatesLoaderStepMeta() {
 		setDefault();
 	}
@@ -66,22 +63,14 @@ public class TemplatesLoaderStepMeta extends BaseStepMeta implements StepMetaInt
 	public void check(List<CheckResultInterface> remarks, TransMeta transMeta, StepMeta stepMeta, RowMetaInterface prev,
 			String[] input, String[] output, RowMetaInterface info) {
 
-		// if (Const.isEmpty(fieldName)) {
-		// CheckResultInterface error = new CheckResult(
-		// CheckResult.TYPE_RESULT_ERROR,
-		// "error rorororroroo",
-		// stepMeta);
-		// remarks.add(error);
-		// }
-		// else {
 		CheckResultInterface ok = new CheckResult(CheckResult.TYPE_RESULT_OK, "", stepMeta);
 		remarks.add(ok);
-		// }
 
 	}
 
 	public StepInterface getStep(StepMeta stepMeta, StepDataInterface stepDataInterface, int copyNr,
 			TransMeta transMeta, Trans trans) {
+		
 		return new TemplatesLoaderStep(stepMeta, stepDataInterface, copyNr, transMeta, trans);
 	}
 
@@ -99,16 +88,12 @@ public class TemplatesLoaderStepMeta extends BaseStepMeta implements StepMetaInt
 			throws KettleXMLException {
 		
 		try {
-		
 			
 			infoboxTemplateOutputField = XMLHandler.getTagValue(stepDomNode, 
 					Field.TEMPLATE_OUT_FIELD.name());
 			
 			templatePattern = XMLHandler.getTagValue(stepDomNode, 
 					Field.TEMPLATE_PATTERN_IN.name());
-			
-			
-			
 			
 		}catch (Throwable e) {
 			e.printStackTrace();
@@ -140,13 +125,10 @@ public class TemplatesLoaderStepMeta extends BaseStepMeta implements StepMetaInt
 		
 		templatePattern = repository.getStepAttributeString(stepIdInRepository, 
 				Field.TEMPLATE_PATTERN_IN.name());
-		
-		
 	}
 
 	@Override
 	public void saveRep(Repository repository, ObjectId idOfTransformation, ObjectId idOfStep) throws KettleException {
-
 
 		repository.saveStepAttribute(idOfTransformation, idOfStep, 
 				Field.TEMPLATE_OUT_FIELD.name(), infoboxTemplateOutputField);
@@ -155,7 +137,6 @@ public class TemplatesLoaderStepMeta extends BaseStepMeta implements StepMetaInt
 				Field.TEMPLATE_PATTERN_IN.name(), templatePattern);
 	}
 
-	
 	public void setDefault() {
 		
 		//Valores default
@@ -204,8 +185,6 @@ public class TemplatesLoaderStepMeta extends BaseStepMeta implements StepMetaInt
 
 	
 	// setter and getter
-	
-
 	public String getInfoboxTemplateOutputField() {
 		return infoboxTemplateOutputField;
 	}
@@ -221,5 +200,4 @@ public class TemplatesLoaderStepMeta extends BaseStepMeta implements StepMetaInt
 	public void setTemplatePattern(String templatePattern) {
 		this.templatePattern = templatePattern;
 	}
-
 }

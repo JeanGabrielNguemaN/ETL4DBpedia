@@ -1,5 +1,22 @@
-package br.ufrj.ppgi.greco.kettle.dbpedia.publication.steps;
+/*
+* %W% %E% Jean Gabriel Nguema Ngomo
+*
+* Copyright 2021 Jean Gabriel Nguema Ngomo
+*
+*Licensed under the Apache License, Version 2.0 (the "License");
+*you may not use this file except in compliance with the License.
+*You may obtain a copy of the License at
+*
+*    http://www.apache.org/licenses/LICENSE-2.0
+*
+*Unless required by applicable law or agreed to in writing, software
+*distributed under the License is distributed on an "AS IS" BASIS,
+*WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*See the License for the specific language governing permissions and
+*limitations under the License.
+*/
 
+package br.ufrj.ppgi.greco.kettle.dbpedia.publication.steps;
 
 import java.io.BufferedWriter;
 import java.io.File;
@@ -8,10 +25,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -28,8 +43,6 @@ import org.pentaho.di.trans.step.StepDataInterface;
 import org.pentaho.di.trans.step.StepInterface;
 import org.pentaho.di.trans.step.StepMeta;
 import org.pentaho.di.trans.step.StepMetaInterface;
-
-//import br.ufrj.ppgi.greco.kettle.plugin.tools.datatable.DataTable;
 //import br.ufrj.ppgi.greco.kettle.dbpedia.dao.TemplateManager;
 import br.ufrj.ppgi.greco.kettle.dbpedia.publication.wikipedia.CheckResult;
 import br.ufrj.ppgi.greco.kettle.dbpedia.publication.wikipedia.Entity;
@@ -37,6 +50,13 @@ import br.ufrj.ppgi.greco.kettle.dbpedia.publication.wikipedia.EntityManager;
 import br.ufrj.ppgi.greco.kettle.dbpedia.publication.wikipedia.WikipediaPageChecker;
 import br.ufrj.ppgi.greco.kettle.dbpedia.utils.TemplatesHandler;
 
+/**
+* This class is responsible for the logic processing in the Step, and according to it generating rows 
+* to its output when the transformation runs.  
+* 
+* @version 1.01 03 Mar 2021
+* @author Jean Gabriel Nguema Ngomo
+*/
 public class ArticleCheckerStep extends BaseStep implements StepInterface {
 
 	public ArticleCheckerStep(StepMeta stepMeta, StepDataInterface stepDataInterface, int copyNr,
@@ -63,8 +83,8 @@ public class ArticleCheckerStep extends BaseStep implements StepInterface {
 			
 			data.selectedMappedProperties=meta.getSelectedMappedProperties().split(",");
 				
+			RowMetaInterface rowMeta = getInputRowMeta();
 			
-			RowMetaInterface rowMeta = getInputRowMeta(); // chamar apenas apos											// chamar getRow()
 			data.inputRowSize = rowMeta.size();
 
 			data.outputRowMeta = rowMeta.clone();
@@ -81,7 +101,6 @@ public class ArticleCheckerStep extends BaseStep implements StepInterface {
 			data.infoboxName=getInfoboxName(data.mappings);
 			
 			data.proposedTitleField = meta.getSelectedFieldForTitle();
-		   
 		   
 			data.proposedInfoboxTitleProperty = meta.getSelectedPropertyForInfoboxTitle();
 			
@@ -192,25 +211,16 @@ public class ArticleCheckerStep extends BaseStep implements StepInterface {
 		
 		fieldIndexHashMap=new HashMap<String, Integer>();
 		
-	    String field_str="";
-	    String indexOf_str="";
-		 
 	    for (String field: fields) {
 			 
 			 int index=rowMetaInterface.indexOfValue(field);
 			 
 			 fieldIndexHashMap.put(field, index);
-			 
-			    field_str+=field+ ", ";
-			    indexOf_str+=index+ ", ";
 		 }
 		 
 		return fieldIndexHashMap;
 		
 	}
-	
-	
-
 	
 	/**
 	 * extrair valor do field(campo) no row (registro).
@@ -221,7 +231,6 @@ public class ArticleCheckerStep extends BaseStep implements StepInterface {
 	 */
 	private String extrairValorField(Object[] row, String field) throws KettleValueException {
 		
-	
 		RowMetaInterface rowMetaInterface = getInputRowMeta();
 		
 		int index=rowMetaInterface.indexOfValue(field);
@@ -278,8 +287,7 @@ public class ArticleCheckerStep extends BaseStep implements StepInterface {
 	
 		//OPTION JSON
 		StringBuffer contexntJSON= new StringBuffer("");
-		
-		
+	
 		//primeiras linhas
 		contexntJSON.append(
 		  "{\"infobox\":" +"\n\t\t"
@@ -292,7 +300,6 @@ public class ArticleCheckerStep extends BaseStep implements StepInterface {
 		
 		for (String campoDoDominio: campos) {
 			
-		
 			String propriedadeDoTemplate= campoToProperty.get(campoDoDominio);
 							
 			//-------------------------------------------------------------------------	

@@ -1,8 +1,24 @@
+/*
+* %W% %E% Jean Gabriel Nguema Ngomo
+*
+* Copyright 2021 Jean Gabriel Nguema Ngomo
+*
+*Licensed under the Apache License, Version 2.0 (the "License");
+*you may not use this file except in compliance with the License.
+*You may obtain a copy of the License at
+*
+*    http://www.apache.org/licenses/LICENSE-2.0
+*
+*Unless required by applicable law or agreed to in writing, software
+*distributed under the License is distributed on an "AS IS" BASIS,
+*WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+*See the License for the specific language governing permissions and
+*limitations under the License.
+*/
 package br.ufrj.ppgi.greco.kettle.dbpedia.publication.steps;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
@@ -28,7 +44,6 @@ import org.pentaho.di.core.exception.KettleStepException;
 import org.pentaho.di.core.row.RowMetaInterface;
 import org.pentaho.di.core.row.ValueMetaInterface;
 import org.pentaho.di.core.util.StringUtil;
-import org.pentaho.di.i18n.BaseMessages;
 import org.pentaho.di.trans.TransMeta;
 import org.pentaho.di.trans.step.BaseStepMeta;
 import org.pentaho.di.trans.step.StepDialogInterface;
@@ -36,11 +51,17 @@ import org.pentaho.di.ui.core.widget.ColumnInfo;
 import org.pentaho.di.ui.core.widget.ComboVar;
 import org.pentaho.di.ui.core.widget.TableView;
 import org.pentaho.di.ui.trans.step.BaseStepDialog;
-
 import br.ufrj.ppgi.greco.kettle.dbpedia.utils.MappedPropertiesHandler;
 import br.ufrj.ppgi.greco.kettle.plugin.tools.datatable.DataTable;
 import br.ufrj.ppgi.greco.kettle.plugin.tools.swthelper.SwtHelper;
 
+/**
+* This class is responsible for setting the Step User interface. 
+* It displays many some fiedls and thus capture all user supplied inputs.
+* 
+* @version 1.01 03 Mar 2021
+* @author Jean Gabriel Nguema Ngomo
+*/
 public class ArticleCheckerStepDialog extends BaseStepDialog implements StepDialogInterface {
 	
 	private static Class<?> PKG = ArticleCheckerStepMeta.class;
@@ -49,12 +70,9 @@ public class ArticleCheckerStepDialog extends BaseStepDialog implements StepDial
 	private SwtHelper swthlp;
 	private String dialogTitle;
 
-	//private TextVar wSelectedMappedProperties;
 	private ComboVar wSelectedFieldForTitle;
 	private Button 	wTitleUsedInInfoboxComparison;
 	
-	//NOVOS
-	//private ComboVar wcPropertySelectionForTitle;
 	//Atributos de infobox
 	ColumnInfo columnInfoMappedProperties=null;
 	ColumnInfo[] columns =null;
@@ -67,11 +85,10 @@ public class ArticleCheckerStepDialog extends BaseStepDialog implements StepDial
 		super(parent, (BaseStepMeta) stepMeta, transMeta, stepname);
 
 		meta = (ArticleCheckerStepMeta) baseStepMeta;
-		swthlp = new SwtHelper(transMeta, this.props);
 		
-		//dialogTitle = "Verifica a existência de artigo na Wikipedia";
-			//BaseMessages.getString(PKG, "Step.Title");
-		dialogTitle = "Verificador de existência de Artigo";
+		swthlp = new SwtHelper(transMeta, this.props);
+
+		dialogTitle = "Existing article checker";
 	}
 
 	public String open() {
@@ -104,7 +121,11 @@ public class ArticleCheckerStepDialog extends BaseStepDialog implements StepDial
 
 		// Adiciona um label e um input text no topo do dialog shell
 		wlStepname = new Label(shell, SWT.RIGHT);
-		wlStepname.setText(BaseMessages.getString(PKG, "Step.StepNameField.Label"));
+		//wlStepname.setText(BaseMessages.getString(PKG, "Step.StepNameField.Label"));
+		
+		//artigo
+		wlStepname.setText("Step name");
+		
 		props.setLook(wlStepname);
 
 		fdlStepname = new FormData();
@@ -125,15 +146,11 @@ public class ArticleCheckerStepDialog extends BaseStepDialog implements StepDial
 		wStepname.setLayoutData(fdStepname);
 		Control lastControl = wStepname;
 		
-		
-		
 		// Adiciona
-		Group wGroup0 = swthlp.appendGroup(shell, lastControl, BaseMessages.getString(PKG, "ArticleCheckerStep.Group.Title"));
+		Group wGroup0 = swthlp.appendGroup(shell, lastControl,"Title selection for the potential article");
 		{
 			wSelectedFieldForTitle = 
-					swthlp.appendComboVarRow(wGroup0, null, 
-							BaseMessages.getString(PKG, 
-									"ArticleCheckerStep.Group.Title.Label"), lsMod);
+					swthlp.appendComboVarRow(wGroup0, null, "Domain field", lsMod);
 			//Itens
 			String[] camposPassosAnterior=getFields();
 			
@@ -143,12 +160,10 @@ public class ArticleCheckerStepDialog extends BaseStepDialog implements StepDial
 		lastControl=wGroup0;
 
 		// Adiciona
-		Group wGroup1 = swthlp.appendGroup(shell, lastControl, BaseMessages.getString(PKG, "ArticleCheckerStep.Group.Infobox"));
+		Group wGroup1 = swthlp.appendGroup(shell, lastControl, "Property for infobox title");
 		{
 			wSelectedPropertyForInfoboxTitle = swthlp
-					.appendComboVarRow(wGroup1, null, BaseMessages
-							.getString(PKG, "ArticleCheckerStep.Group.Infobox.Property.Label"), lsMod);
-			
+					.appendComboVarRow(wGroup1, null, "Property aligned to domain", lsMod);
 			
 			 //Itens
 			 String[] mappedMroperties=MappedPropertiesHandler.getMappedProperties();
@@ -165,11 +180,10 @@ public class ArticleCheckerStepDialog extends BaseStepDialog implements StepDial
 					}
 			    );
 			      
-			 
 			//wSelectedMappedProperties = swthlp.appendTextVarRow(wGroup1, wSelectedPropertyForTitle, BaseMessages.getString(PKG, "SparqlUpdateOutputStep.Graph.URI"), lsMod);
 			
-			wTitleUsedInInfoboxComparison = swthlp.appendCheckboxRow(wGroup1,  wSelectedPropertyForInfoboxTitle, BaseMessages
-					.getString(PKG, "ArticleCheckerStep.Group.Infobox.Property.Use"),
+			wTitleUsedInInfoboxComparison = swthlp.appendCheckboxRow(wGroup1,
+					wSelectedPropertyForInfoboxTitle, "Used for comparison?",
 					new SelectionListener() {
 
 						public void widgetSelected(SelectionEvent arg0) {
@@ -189,9 +203,9 @@ public class ArticleCheckerStepDialog extends BaseStepDialog implements StepDial
 
 		// Some buttons
 		wOK = new Button(shell, SWT.PUSH);
-		wOK.setText(BaseMessages.getString(PKG, "Step.Btn.OK")); //$NON-NLS-1$
+		wOK.setText("OK"); //$NON-NLS-1$
 		wCancel = new Button(shell, SWT.PUSH);
-		wCancel.setText(BaseMessages.getString(PKG, "Step.Btn.Cancel")); //$NON-NLS-1$
+		wCancel.setText("Cancel"); //$NON-NLS-1$
 
 		setButtonPositions(new Button[] { wOK, wCancel }, margin, lastControl);
 
@@ -321,12 +335,10 @@ public class ArticleCheckerStepDialog extends BaseStepDialog implements StepDial
 	private Control buildContent(Control lastControl, ModifyListener defModListener) {
 			
 			//novo
-			Group cpt = swthlp.appendGroup(shell, lastControl, BaseMessages
-					.getString(PKG, "ArticleCheckerStep.Group.Properties"), 90);
+			Group cpt = swthlp.appendGroup(shell, lastControl, "Properties Selection for Comparison", 90);
 		  
 			//Atributos de infobox
-			columnInfoMappedProperties=new ColumnInfo(BaseMessages
-					.getString(PKG, "ArticleCheckerStep.Group.Properties.Selected"), ColumnInfo
+			columnInfoMappedProperties=new ColumnInfo("Selected properties", ColumnInfo
 					.COLUMN_TYPE_CCOMBO,  this.getInfoboxAtributes(wSelectedFieldForTitle.getText()));
 		  
 			//Lista vaizia no inicio

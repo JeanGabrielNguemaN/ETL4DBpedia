@@ -34,7 +34,7 @@ public final class DatabaseConnectionFactory {
 	    	 		// Este é um dos meios para registrar um driver 
 	          		Class.forName("com.mysql.jdbc.Driver");
 	          		
-				    String database = "dbpediaexpress";
+				    String database = "dbpediaexpresstest";
 				    String user="dbpedia";
 				    String password="dbpedia";
 					String connectionURL = "jdbc:mysql://localhost/"+database+"?" 

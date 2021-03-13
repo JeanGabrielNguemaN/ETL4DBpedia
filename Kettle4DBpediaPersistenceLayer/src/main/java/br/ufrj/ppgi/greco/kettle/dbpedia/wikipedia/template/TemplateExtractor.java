@@ -121,7 +121,7 @@ public class TemplateExtractor {
            
             try {
             	
-				java.util.concurrent.TimeUnit.SECONDS.sleep(5);
+				java.util.concurrent.TimeUnit.SECONDS.sleep(2);
 				
 			} catch (InterruptedException e) {
 				
