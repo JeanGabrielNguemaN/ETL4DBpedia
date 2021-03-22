@@ -28,6 +28,13 @@ import org.pentaho.di.trans.step.StepDialogInterface;
 import org.pentaho.di.ui.trans.step.BaseStepDialog;
 import br.ufrj.ppgi.greco.kettle.plugin.tools.swthelper.SwtHelper;
 
+/**
+* This class is responsible for setting the Step User interface. 
+* It displays many some fiedls and thus capture all user supplied inputs.
+* 
+* @version 1.01 03 Mar 2021
+* @author Jean Gabriel Nguema Ngomo
+*/
 public class DBpediaMappingsLoaderStepDialog extends BaseStepDialog implements StepDialogInterface {
 	
 	private static Class<?> PKG = DBpediaMappingsLoaderStepMeta.class;

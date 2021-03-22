@@ -55,6 +55,18 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
 
 import br.ufrj.ppgi.greco.kettle.dbpedia.steps.ArticlePublisherStepMeta.Field;
 
+/**
+* This class has the following responsibilities: 
+*  
+* 		1. Maintain step settings
+* 		2. Validate step settings
+* 		3. Serialize step settings
+* 		4. Provide access to step classes
+* 		5. Perform row layout changes
+* 
+* @version 1.01 03 Mar 2021
+* @author Jean Gabriel Nguema Ngomo
+*/
 @Step(
 		  id = "ArticlePublisher",
 		  name = "Article Publisher",

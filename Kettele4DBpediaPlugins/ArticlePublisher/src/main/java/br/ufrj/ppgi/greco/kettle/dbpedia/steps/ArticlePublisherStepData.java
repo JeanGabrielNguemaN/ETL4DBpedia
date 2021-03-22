@@ -28,7 +28,13 @@ import br.ufrj.ppgi.greco.kettle.dbpedia.utils.ContentPublisher;
 import br.ufrj.ppgi.greco.kettle.dbpedia.wikipedia.Entity;
 
 
-
+/**
+* This class is responsable to store processing state, 
+* and to declare and serve as a place for field variables during row processing
+* 
+* @version 1.01 03 Mar 2021
+* @author Jean Gabriel Nguema Ngomo
+*/
 public class ArticlePublisherStepData extends BaseStepData implements StepDataInterface {
 	
 	public RowMetaInterface outputRowMeta;

@@ -27,11 +27,19 @@ import org.pentaho.di.trans.step.StepMeta;
 import org.pentaho.di.trans.step.StepMetaInterface;
 import org.w3c.dom.Node;
 
+
 /**
- * Recupera os templates da Wikipedia, bem como seus mapeamentos da DBpedia Wiki Mappings.
- * Os mapeamentos são interpretados.
- * @author Jean Gabriel Nguema Ngomo
- */
+* This class has the following responsibilities: 
+*  
+* 		1. Maintain step settings
+* 		2. Validate step settings
+* 		3. Serialize step settings
+* 		4. Provide access to step classes
+* 		5. Perform row layout changes
+* 
+* @version 1.01 03 Mar 2021
+* @author Jean Gabriel Nguema Ngomo
+*/
 @Step(
 		  id = "DBpediaMappingsMaintainer",
 		  name = "DBpedia Mappings Maintainer",

@@ -54,6 +54,18 @@ import br.ufrj.ppgi.greco.kettle.dbpedia.steps.ArticleContentBuilderStepMeta.Fie
 import br.ufrj.ppgi.greco.kettle.plugin.tools.datatable.DataTable;
 import br.ufrj.ppgi.greco.kettle.plugin.tools.datatable.DataTableConverter;
 
+/**
+* This class has the following responsibilities: 
+*  
+* 		1. Maintain step settings
+* 		2. Validate step settings
+* 		3. Serialize step settings
+* 		4. Provide access to step classes
+* 		5. Perform row layout changes
+* 
+* @version 1.01 03 Mar 2021
+* @author Jean Gabriel Nguema Ngomo
+*/
 @Step(
 		  id = "ArticleContentBuilder",
 		  name = "Article Content Builder",

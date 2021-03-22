@@ -67,6 +67,13 @@ import br.ufrj.ppgi.greco.kettle.dbpedia.utils.MappedPropertiesHandler;
 import br.ufrj.ppgi.greco.kettle.plugin.tools.datatable.DataTable;
 import br.ufrj.ppgi.greco.kettle.plugin.tools.swthelper.SwtHelper;
 
+/**
+* This class is responsible for setting the Step User interface. 
+* It displays many some fiedls and thus capture all user supplied inputs.
+* 
+* @version 1.01 03 Mar 2021
+* @author Jean Gabriel Nguema Ngomo
+*/
 public class ArticlePublisherStepDialog extends BaseStepDialog implements StepDialogInterface {
 	
 	private static Class<?> PKG = ArticlePublisherStepMeta.class;
